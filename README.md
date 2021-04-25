@@ -17,3 +17,7 @@
 ## Run tests
 
     truffle test
+
+## Resetting
+
+    truffle compile && truffle migrate --reset && yarn dev
