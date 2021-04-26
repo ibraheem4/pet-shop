@@ -24,6 +24,16 @@ App = {
   },
 
   initWeb3: async function () {
+    // https://stackoverflow.com/a/23522755/6313728
+    // Determine if browser is Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    // Show the announcement on Safari browsers
+    if (isSafari) {
+      document.getElementById("safariAnnouncement").classList.remove("invisible");
+      document.getElementById("safariAnnouncement").classList.add("visible");
+    }
+
     // Modern dapp browsers...
     if (window.ethereum) {
       App.web3Provider = window.ethereum;
@@ -65,7 +75,14 @@ App = {
   },
 
   bindEvents: function () {
-    $(document).on("click", ".btn-adopt", App.handleAdopt);
+    // https://stackoverflow.com/a/23522755/6313728
+    // Determine if browser is Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    // Do not bind the events on Safari browsers
+    if (!isSafari) {
+      $(document).on("click", ".btn-adopt", App.handleAdopt);
+    }
   },
 
   markAdopted: function (adopters, account) {

@@ -1,5 +1,7 @@
 # [Pet Shop Tutorial](https://www.trufflesuite.com/boxes/pet-shop)
 
+#### NOTE: This application does not work properly on Safari, most likely because Safari lacks a MetaMask extension.
+
 ## Run the development console.
 
     truffle develop
