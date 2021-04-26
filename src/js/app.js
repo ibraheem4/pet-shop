@@ -3,20 +3,20 @@ App = {
   contracts: {},
 
   init: async function () {
-    // Load pets.
-    $.getJSON("../pets.json", function (data) {
-      var petsRow = $("#petsRow");
-      var petTemplate = $("#petTemplate");
+    // Load animals.
+    $.getJSON("../animals.json", function (data) {
+      var animalsRow = $("#animalsRow");
+      var animalTemplate = $("#animalTemplate");
 
       for (i = 0; i < data.length; i++) {
-        petTemplate.find(".panel-title").text(data[i].name);
-        petTemplate.find("img").attr("src", data[i].picture);
-        petTemplate.find(".pet-breed").text(data[i].breed);
-        petTemplate.find(".pet-age").text(data[i].age);
-        petTemplate.find(".pet-location").text(data[i].location);
-        petTemplate.find(".btn-adopt").attr("data-id", data[i].id);
+        animalTemplate.find(".panel-title").text(data[i].name);
+        animalTemplate.find("img").attr("src", data[i].picture);
+        animalTemplate.find(".animal-breed").text(data[i].breed);
+        animalTemplate.find(".animal-age").text(data[i].age);
+        animalTemplate.find(".animal-location").text(data[i].location);
+        animalTemplate.find(".btn-adopt").attr("data-animalid", data[i].id);
 
-        petsRow.append(petTemplate.html());
+        animalsRow.append(animalTemplate.html());
       }
     });
 
@@ -57,7 +57,7 @@ App = {
       // Set the provider for our contract
       App.contracts.Adoption.setProvider(App.web3Provider);
 
-      // Use our contract to retrieve and mark the adopted pets
+      // Use our contract to retrieve and mark the adopted animals
       return App.markAdopted();
     });
 
@@ -80,7 +80,7 @@ App = {
       .then(function (adopters) {
         for (i = 0; i < adopters.length; i++) {
           if (adopters[i] !== "0x0000000000000000000000000000000000000000") {
-            $(".panel-pet").eq(i).find("button").text("Success").attr("disabled", true);
+            $(".panel-animal").eq(i).find("button").text("Success").attr("disabled", true);
           }
         }
       })
@@ -92,7 +92,7 @@ App = {
   handleAdopt: function (event) {
     event.preventDefault();
 
-    var petId = parseInt($(event.target).data("id"));
+    var animalId = parseInt($(event.target).data("animalid"));
 
     var adoptionInstance;
 
@@ -108,7 +108,7 @@ App = {
           adoptionInstance = instance;
 
           // Execute adopt as a transaction by sending account
-          return adoptionInstance.adopt(petId, { from: account });
+          return adoptionInstance.adopt(animalId, { from: account });
         })
         .then(function (result) {
           return App.markAdopted();

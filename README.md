@@ -20,4 +20,4 @@
 
 ## Resetting
 
-    truffle compile && truffle migrate --reset && yarn dev
+    truffle compile --all && truffle migrate --reset && yarn test && yarn dev

@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "lite-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "truffle test",
+    "start": "truffle compile --all && truffle migrate --reset && yarn test && yarn dev"
   },
   "author": "",
   "license": "ISC",
