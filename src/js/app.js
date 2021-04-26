@@ -30,8 +30,10 @@ App = {
 
     // Show the announcement on Safari browsers
     if (isSafari) {
-      document.getElementById("safariAnnouncement").classList.remove("invisible");
-      document.getElementById("safariAnnouncement").classList.add("visible");
+      // The bootstrap 3 way
+      // https://getbootstrap.com/docs/3.3/css/#helper-classes-show-hide
+      document.getElementById("safariAnnouncement").classList.remove("hidden");
+      document.getElementById("safariAnnouncement").classList.add("show");
     }
 
     // Modern dapp browsers...
