@@ -8,6 +8,7 @@ The goal of this project is to expand upon the widely-known pet shop tutorial.  
 - Ganache
 - py-solc-x
 - OpenZepellin
+- Metamask
 
 #### NOTE: This application does not work on Safari, most likely because Safari lacks a MetaMask extension.
 
