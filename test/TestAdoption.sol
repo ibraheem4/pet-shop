@@ -32,7 +32,7 @@ contract TestAdoption {
   // Testing retrieval of all animal owners
   function testGetAdopterAddressByAnimalIdInArray() public {
    // Store adopters in memory rather than contract's storage
-   address[16] memory adopters = adoption.getAdopters();
+   address[16] memory adopters = adoption.getAnimalAdopters();
 
    Assert.equal(adopters[expectedAnimalId], expectedAdopter, "Owner of the expected animal should be this contract");
   }

@@ -89,14 +89,14 @@ App = {
     }
   },
 
-  markAdopted: function (adopters, account) {
+  markAdopted: function (adopters) {
     var adoptionInstance;
 
     App.contracts.Adoption.deployed()
       .then(function (instance) {
         adoptionInstance = instance;
 
-        return adoptionInstance.getAdopters.call();
+        return adoptionInstance.getAnimalAdopters.call();
       })
       .then(function (adopters) {
         for (i = 0; i < adopters.length; i++) {
@@ -111,14 +111,14 @@ App = {
       });
   },
 
-  markReturned: function (adopters, account) {
+  markReturned: function (adopters) {
     var adoptionInstance;
 
     App.contracts.Adoption.deployed()
       .then(function (instance) {
         adoptionInstance = instance;
 
-        return adoptionInstance.getAdopters.call();
+        return adoptionInstance.getAnimalAdopters.call();
       })
       .then(function (adopters) {
         for (i = 0; i < adopters.length; i++) {
@@ -154,7 +154,7 @@ App = {
           // Execute adopt as a transaction by sending account
           return adoptionInstance.adoptAnimal(animalId, { from: account });
         })
-        .then(function (result) {
+        .then(function () {
           return App.markAdopted();
         })
         .catch(function (err) {
@@ -184,7 +184,7 @@ App = {
           // Execute return as a transaction by sending account
           return returningInstance.returnAnimal(animalId, { from: account });
         })
-        .then(function (result) {
+        .then(function () {
           return App.markReturned();
         })
         .catch(function (err) {
