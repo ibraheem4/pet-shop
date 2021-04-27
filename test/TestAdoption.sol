@@ -37,4 +37,11 @@ contract TestAdoption is Ownable {
 
    Assert.equal(animalAdopters[expectedAnimalId], expectedAnimalAdopter, "Owner of the expected animal should be this contract");
   }
+
+  // Testing the returnAnimal() function
+  function testUserCanReturnAnimal() public {
+    uint returnedAnimalId = adoption.returnAnimal(expectedAnimalId);
+
+    Assert.equal(returnedAnimalId, expectedAnimalId, "Returning the expected animal should match what is returned.");
+  }
 }
