@@ -1,6 +1,9 @@
 # Dependency directory
-node_modules
+node_modules/
 
 # truffle build directory
 build/contracts/*
 !build/contracts/.gitkeep
+
+# Ignore compiled contracts
+bin/
