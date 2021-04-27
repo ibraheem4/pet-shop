@@ -2,6 +2,13 @@
 
 The goal of this project is to expand upon the widely-known pet shop tutorial.  Ultimately, I intend to build upon this functionality by integrating Truffle into an Ember.js addon that will allow me to do more robust testing, as well as maintain greater visibility and control over data models.  Although these contracts are basic, the goal for me is to first get a thorough understanding of how to build, test, and deploy basic smart contracts before tackling more ambitious projects.
 
+## Prerequisites
+
+- Truffle
+- Ganache
+- py-solc-x
+- OpenZepellin
+
 #### NOTE: This application does not work on Safari, most likely because Safari lacks a MetaMask extension.
 
 ## Setup
