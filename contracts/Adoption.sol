@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.8.0;
+pragma solidity ^0.8.0;
 
-contract Adoption {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract Adoption is Ownable {
   address[16] public animalAdopters;
 
   function adoptAnimal(uint animalId) public returns (uint) {

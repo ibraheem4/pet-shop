@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.8.0;
+pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 import "../contracts/Adoption.sol";
 
-contract TestAdoption {
+contract TestAdoption is Ownable {
   // The address of the adoption contract to be tested
   Adoption adoption = Adoption(DeployedAddresses.Adoption());
 
@@ -13,27 +14,27 @@ contract TestAdoption {
   uint expectedAnimalId = 8;
 
   //The expected owner of adopted animal is this contract
-  address expectedAdopter = address(this);
+  address expectedAnimalAdopter = address(this);
 
   // Testing the adoptAnimal() function
   function testUserCanAdoptAnimal() public {
-    uint returnedId = adoption.adoptAnimal(expectedAnimalId);
+    uint adoptedAnimalId = adoption.adoptAnimal(expectedAnimalId);
 
-    Assert.equal(returnedId, expectedAnimalId, "Adoption of the expected animal should match what is returned.");
+    Assert.equal(adoptedAnimalId, expectedAnimalId, "Adoption of the expected animal should match what is returned.");
   }
 
   // Testing retrieval of a single animal's owner
   function testGetAdopterAddressByAnimalId() public {
-   address adopter = adoption.adopters(expectedAnimalId);
+   address animalAdopter = adoption.animalAdopters(expectedAnimalId);
 
-   Assert.equal(adopter, expectedAdopter, "Owner of the expected animal should be this contract");
+   Assert.equal(animalAdopter, expectedAnimalAdopter, "Owner of the expected animal should be this contract");
   }
 
   // Testing retrieval of all animal owners
   function testGetAdopterAddressByAnimalIdInArray() public {
    // Store adopters in memory rather than contract's storage
-   address[16] memory adopters = adoption.getAnimalAdopters();
+   address[16] memory animalAdopters = adoption.getAnimalAdopters();
 
-   Assert.equal(adopters[expectedAnimalId], expectedAdopter, "Owner of the expected animal should be this contract");
+   Assert.equal(animalAdopters[expectedAnimalId], expectedAnimalAdopter, "Owner of the expected animal should be this contract");
   }
 }
