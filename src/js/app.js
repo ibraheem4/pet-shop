@@ -101,8 +101,8 @@ App = {
       .then(function (adopters) {
         for (i = 0; i < adopters.length; i++) {
           if (adopters[i] !== "0x0000000000000000000000000000000000000000") {
-            $(".panel-animal").eq(i).find(".btn-adopt").attr("disabled", true);
-            $(".panel-animal").eq(i).find(".btn-return").attr("disabled", false);
+            $(".panel-animal").eq(i).find(".btn-adopt").prop("disabled", true);
+            $(".panel-animal").eq(i).find(".btn-return").removeProp("disabled");
           }
         }
       })
@@ -123,8 +123,8 @@ App = {
       .then(function (adopters) {
         for (i = 0; i < adopters.length; i++) {
           if (adopters[i] == "0x0000000000000000000000000000000000000000") {
-            $(".panel-animal").eq(i).find(".btn-adopt").attr("disabled", false);
-            $(".panel-animal").eq(i).find(".btn-return").attr("disabled", true);
+            $(".panel-animal").eq(i).find(".btn-adopt").removeProp("disabled");
+            $(".panel-animal").eq(i).find(".btn-return").prop("disabled", true);
           }
         }
       })
