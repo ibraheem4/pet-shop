@@ -15,6 +15,7 @@ App = {
         animalTemplate.find(".animal-age").text(data[i].age);
         animalTemplate.find(".animal-location").text(data[i].location);
         animalTemplate.find(".btn-adopt").attr("data-animalid", data[i].id);
+        animalTemplate.find(".btn-return").attr("data-animalid", data[i].id);
 
         animalsRow.append(animalTemplate.html());
       }
@@ -84,6 +85,7 @@ App = {
     // Do not bind the events on Safari browsers
     if (!isSafari) {
       $(document).on("click", ".btn-adopt", App.handleAdopt);
+      $(document).on("click", ".btn-return", App.handleReturn);
     }
   },
 
@@ -99,7 +101,30 @@ App = {
       .then(function (adopters) {
         for (i = 0; i < adopters.length; i++) {
           if (adopters[i] !== "0x0000000000000000000000000000000000000000") {
-            $(".panel-animal").eq(i).find("button").text("Success").attr("disabled", true);
+            $(".panel-animal").eq(i).find(".btn-adopt").attr("disabled", true);
+            $(".panel-animal").eq(i).find(".btn-return").attr("disabled", false);
+          }
+        }
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
+  markReturned: function (adopters, account) {
+    var adoptionInstance;
+
+    App.contracts.Adoption.deployed()
+      .then(function (instance) {
+        adoptionInstance = instance;
+
+        return adoptionInstance.getAdopters.call();
+      })
+      .then(function (adopters) {
+        for (i = 0; i < adopters.length; i++) {
+          if (adopters[i] == "0x0000000000000000000000000000000000000000") {
+            $(".panel-animal").eq(i).find(".btn-adopt").attr("disabled", false);
+            $(".panel-animal").eq(i).find(".btn-return").attr("disabled", true);
           }
         }
       })
@@ -127,10 +152,40 @@ App = {
           adoptionInstance = instance;
 
           // Execute adopt as a transaction by sending account
-          return adoptionInstance.adopt(animalId, { from: account });
+          return adoptionInstance.adoptAnimal(animalId, { from: account });
         })
         .then(function (result) {
           return App.markAdopted();
+        })
+        .catch(function (err) {
+          console.log(err.message);
+        });
+    });
+  },
+
+  handleReturn: function (event) {
+    event.preventDefault();
+
+    var animalId = parseInt($(event.target).data("animalid"));
+
+    var returningInstance;
+
+    web3.eth.getAccounts(function (error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.Adoption.deployed()
+        .then(function (instance) {
+          returningInstance = instance;
+
+          // Execute return as a transaction by sending account
+          return returningInstance.returnAnimal(animalId, { from: account });
+        })
+        .then(function (result) {
+          return App.markReturned();
         })
         .catch(function (err) {
           console.log(err.message);
