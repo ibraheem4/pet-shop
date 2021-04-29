@@ -5,7 +5,7 @@ The goal of this project is to expand upon the widely-known pet shop tutorial.  
 ## Prerequisites
 
 - [Truffle](https://www.trufflesuite.com)
-- [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
+- [Ganache](https://www.trufflesuite.com/ganache)
 - [py-solc-x](https://pypi.org/project/py-solc-x/)
 - [OpenZepellin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)
 - [Metamask](https://metamask.io)
