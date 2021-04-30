@@ -103,7 +103,7 @@ App = {
           if (adopters[i] !== "0x0000000000000000000000000000000000000000") {
             $(".panel-animal").eq(i).find(".btn-adopt").prop("disabled", true);
             $(".panel-animal").eq(i).find(".btn-return").removeProp("disabled").addClass("btn-danger");
-            $(".panel-animal").eq(i).find(".adopter-address").html(`<small>${adopters[i]}</small>`);
+            $(".panel-animal").eq(i).find(".adopter-address").html(adopters[i]);
           }
         }
       })
