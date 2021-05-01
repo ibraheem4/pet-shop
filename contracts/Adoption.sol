@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract Adoption {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract Adoption is Ownable {
     address[16] public animalAdopters;
 
     function adoptAnimal(uint256 animalId) public returns (uint256) {
@@ -14,6 +16,15 @@ contract Adoption {
 
     function getAnimalAdopters() public view returns (address[16] memory) {
         return animalAdopters;
+    }
+
+    // TODO: Test this function
+    function claimAnimal(uint256 animalId) public onlyOwner returns (uint256) {
+        require(animalId >= 0 && animalId <= 15);
+
+        animalAdopters[animalId] = this.owner();
+
+        return animalId;
     }
 
     function returnAnimal(uint256 animalId) public returns (uint256) {
