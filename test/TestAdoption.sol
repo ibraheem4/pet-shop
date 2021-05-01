@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 import "../contracts/Adoption.sol";
 
-contract TestAdoption is Ownable {
+contract TestAdoption {
   // The address of the adoption contract to be tested
   Adoption adoption = Adoption(DeployedAddresses.Adoption());
 

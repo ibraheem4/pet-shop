@@ -45,13 +45,13 @@ The goal of this project is to expand upon the widely-known pet shop tutorial.  
 
 ### Functionality
 
-- Implement `Ownable`
+- ~~Implement `Ownable`~~
 ### Testing
 
 - ~~Test on Ganache~~
 - Test on Rinkeby Testnet
 - Write test for `returnAnimal` function
-- Test `Ownable`
+- ~~Test `Ownable`~~
 
 ### Deployment
 
