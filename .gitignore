@@ -7,3 +7,7 @@ build/contracts/*
 
 # Ignore compiled contracts
 bin/
+
+# Ignore compiled coverage reports
+coverage/
+coverage.json
