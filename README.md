@@ -1,6 +1,8 @@
 # Expanded [Pet Shop](https://www.trufflesuite.com/boxes/pet-shop) Tutorial
 
-The goal of this project is to expand upon the widely-known pet shop tutorial.  Ultimately, I intend to build upon this functionality by integrating Truffle into an Ember.js addon that will allow me to do more robust testing, as well as maintain greater visibility and control over data models.  Although these contracts are basic, the goal for me is to first get a thorough understanding of how to build, test, and deploy basic smart contracts before tackling more ambitious projects.
+The goal of this project is to learn DApp development by expanding upon the widely-known Pet Shop tutorial using Truffle.
+
+Although the concept of a Pet Shop is basic, the goal for me is to first get a thorough understanding of how to build, test, and deploy basic smart contracts before tackling more ambitious projects.
 
 ## Prerequisites
 
@@ -9,40 +11,35 @@ The goal of this project is to expand upon the widely-known pet shop tutorial.  
 - [py-solc-x](https://pypi.org/project/py-solc-x/)
 - [OpenZepellin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts)
 - [Metamask](https://metamask.io)
+- [Google Chrome](https://www.google.com/chrome/) or [Firefox](https://www.mozilla.org/firefox)
 
-#### NOTE: This application does not work on Safari, most likely because Safari lacks a MetaMask extension.
+> 🦊 This application does not work on Safari, most likely because Safari lacks a MetaMask extension 🦊
 
 ## Setup
 
-### Run the development console.
+### Open Ganache
+### Run `yarn start`
 
-    truffle develop
-
-### Compile and migrate the smart contracts. NOTE: inside the development console, we don't preface commands with truffle.
-
-    truffle compile
-    truffle migrate
-
-### Run the liteserver development server (outside the development console) for front-end hot reloading. Smart contract changes must be manually recompiled and migrated.
-
-    yarn dev
+- Compiles contracts
+- Performs migrations
+- Runs tests
 
 > Serves the front-end on http://localhost:3000
 
 ### Run tests
 
-    truffle test
+    yarn test
 
-### Resetting
-
-    truffle compile --all && truffle migrate --reset && yarn test && yarn dev
-
-## Improvements
-
-- Add a `returnAnimal` function, allowing animals to be un-adopted
-- Add `Return` button
+- Runs Solidity Tests
+- Runs Unit Tests
 ## Things TODO
 
+### Product Improvements
+
+- ~~Add a `returnAnimal` function, allowing animals to be un-adopted~~
+- ~~Add `Return` button~~
+- Add `Claim` button, only for owner
+- Add `Release` button, only for owner
 ### Functionality
 
 - ~~Implement `Ownable`~~
@@ -50,10 +47,14 @@ The goal of this project is to expand upon the widely-known pet shop tutorial.  
 
 - ~~Test on Ganache~~
 - Test on Rinkeby Testnet
-- Write test for `returnAnimal` function
+- ~~Write test for `returnAnimal` function~~
 - ~~Test `Ownable`~~
+- ~~Figure out how to test Access Control~
 
 ### Deployment
 
 - ~~Deploy contracts to Ganache~~
 - Deploy contracts to Rinkeby Testnet
+
+###
+- Integrating Truffle into an Ember.js app / addon

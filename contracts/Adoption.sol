@@ -35,6 +35,23 @@ contract Adoption is Ownable {
         return animalId;
     }
 
+    event ReleasedAnimal(uint256 animalId);
+
+    function releaseAnimal(uint256 animalId)
+        public
+        onlyOwner
+        returns (uint256)
+    {
+        require(animalId >= 0 && animalId <= 15);
+
+        // "Release" an animal by setting the address of it's adopter back to 0
+        animalAdopters[animalId] = address(0);
+
+        emit ReleasedAnimal(animalId);
+
+        return animalId;
+    }
+
     event ReturnedAnimal(uint256 animalId);
 
     function returnAnimal(uint256 animalId) public returns (uint256) {
