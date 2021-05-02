@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "lite-server",
     "test": "truffle test",
+    "test:mocha": "truffle compile && mocha --exit --recursive",
     "start": "truffle compile --all && truffle migrate --reset && yarn test && yarn dev"
   },
   "author": "",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@openzeppelin/contracts": "4.0.0",
     "@openzeppelin/test-environment": "0.1.9",
+    "@openzeppelin/test-helpers": "0.5.11",
     "chai": "4.3.4",
     "concat-stream": "^1.5.2",
     "lite-server": "^2.3.0",

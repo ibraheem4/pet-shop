@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Adoption is Ownable {
     address[16] public animalAdopters;
+    string private nickname;
 
     function adoptAnimal(uint256 animalId) public returns (uint256) {
         require(animalId >= 0 && animalId <= 15);
@@ -37,5 +38,17 @@ contract Adoption is Ownable {
         }
 
         return animalId;
+    }
+
+    event ValueChanged(string newNickname);
+
+    // The onlyOwner modifier restricts who can call the setNickname function
+    function setNickname(string memory newNickname) public onlyOwner {
+        nickname = newNickname;
+        emit ValueChanged(newNickname);
+    }
+
+    function getNickname() public view returns (string memory) {
+        return nickname;
     }
 }
