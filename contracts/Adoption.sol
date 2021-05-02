@@ -7,10 +7,14 @@ contract Adoption is Ownable {
     address[16] public animalAdopters;
     string private nickname;
 
+    event AdoptedAnimal(uint256 animalId);
+
     function adoptAnimal(uint256 animalId) public returns (uint256) {
         require(animalId >= 0 && animalId <= 15);
 
         animalAdopters[animalId] = msg.sender;
+
+        emit AdoptedAnimal(animalId);
 
         return animalId;
     }
@@ -31,6 +35,8 @@ contract Adoption is Ownable {
         return animalId;
     }
 
+    event ReturnedAnimal(uint256 animalId);
+
     function returnAnimal(uint256 animalId) public returns (uint256) {
         require(animalId >= 0 && animalId <= 15);
 
@@ -39,6 +45,8 @@ contract Adoption is Ownable {
             // "Return" an animal by setting the address of it's adopter back to 0
             animalAdopters[animalId] = address(0);
         }
+
+        emit ReturnedAnimal(animalId);
 
         return animalId;
     }
