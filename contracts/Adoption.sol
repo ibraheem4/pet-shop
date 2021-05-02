@@ -19,11 +19,14 @@ contract Adoption is Ownable {
         return animalAdopters;
     }
 
-    // TODO: Test this function
+    event ClaimedAnimal(uint256 animalId);
+
     function claimAnimal(uint256 animalId) public onlyOwner returns (uint256) {
         require(animalId >= 0 && animalId <= 15);
 
         animalAdopters[animalId] = this.owner();
+
+        emit ClaimedAnimal(animalId);
 
         return animalId;
     }
@@ -40,12 +43,12 @@ contract Adoption is Ownable {
         return animalId;
     }
 
-    event ValueChanged(string newNickname);
+    event NicknamedAnimal(string newNickname);
 
     // The onlyOwner modifier restricts who can call the setNickname function
     function setNickname(string memory newNickname) public onlyOwner {
         nickname = newNickname;
-        emit ValueChanged(newNickname);
+        emit NicknamedAnimal(newNickname);
     }
 
     function getNickname() public view returns (string memory) {
