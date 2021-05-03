@@ -10,6 +10,7 @@
     "coverage": "truffle run coverage",
     "dev": "lite-server",
     "test": "truffle test",
+    "test:verbose": "truffle test --compile-all-debug --show-events",
     "test:mocha": "truffle compile && mocha --exit --recursive",
     "start": "truffle compile --all && truffle migrate --reset && yarn test && yarn dev"
   },
