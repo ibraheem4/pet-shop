@@ -3,6 +3,7 @@
 // Load dependencies
 const { accounts, contract } = require("@openzeppelin/test-environment");
 const { expect } = require("chai");
+const assert = require("assert");
 const { expectRevert } = require("@openzeppelin/test-helpers");
 
 // Load compiled artifacts
@@ -15,7 +16,7 @@ const nonOwnerErrorString = "Ownable: caller is not the owner -- Reason given: O
 // Test functions
 // https://ethereum.stackexchange.com/a/39172
 function assertEventOfType(response, eventName, index) {
-  assert.equal(response.logs[index].event, eventName, eventName + " event should fire.");
+  assert.strictEqual(response.logs[index].event, eventName, eventName + " event should fire.");
 }
 
 describe("Adoption", function () {
