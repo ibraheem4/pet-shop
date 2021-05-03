@@ -19,9 +19,11 @@ function assertEventOfType(response, eventName, index) {
 }
 
 describe("Adoption", function () {
+  // These conveniences are provided by openzeppelin/test-environment
   const [owner, other] = accounts;
 
   beforeEach(async function () {
+    // Set each adoption to be adopted by the contract owner
     this.adoption = await Adoption.new({ from: owner });
   });
 
