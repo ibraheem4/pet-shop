@@ -2,10 +2,11 @@
 
 The goal of this project is to learn DApp development by expanding upon the widely-known Pet Shop tutorial using Truffle.
 
-Although the concept of a Pet Shop is basic, the goal for me is to first get a thorough understanding of how to build, test, and deploy basic smart contracts before tackling more ambitious projects.
-
 ## Prerequisites
 
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
 - [Truffle](https://www.trufflesuite.com)
 - [Ganache](https://www.trufflesuite.com/ganache)
 - [py-solc-x](https://pypi.org/project/py-solc-x/)
@@ -17,44 +18,19 @@ Although the concept of a Pet Shop is basic, the goal for me is to first get a t
 
 ## Setup
 
-### Open Ganache
-### Run `yarn start`
+- Open Ganache
+> Create new Workspace using `truffle-config.js`
 
-- Compiles contracts
-- Performs migrations
-- Runs tests
+- Run `yarn start`
 
-> Serves the front-end on http://localhost:3000
+> - Compiles contracts
+> - Performs migrations
+> - Runs tests
+> - Starts development server at http://localhost:3000
 
-### Run tests
+## Run tests
 
     yarn test
 
 - Runs Solidity Tests
-- Runs Unit Tests
-## Things TODO
-
-### Product Improvements
-
-- ~~Add a `returnAnimal` function, allowing animals to be un-adopted~~
-- ~~Add `Return` button~~
-- Add `Claim` button, only for owner
-- Add `Release` button, only for owner
-### Functionality
-
-- ~~Implement `Ownable`~~
-### Testing
-
-- ~~Test on Ganache~~
-- Test on Rinkeby Testnet
-- ~~Write test for `returnAnimal` function~~
-- ~~Test `Ownable`~~
-- ~~Figure out how to test Access Control~
-
-### Deployment
-
-- ~~Deploy contracts to Ganache~~
-- Deploy contracts to Rinkeby Testnet
-
-###
-- Integrating Truffle into an Ember.js app / addon
+- Runs Mocha Tests
