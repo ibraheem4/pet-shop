@@ -26,6 +26,6 @@
     "lodash.template": "^4.5.0",
     "solidity-coverage": "0.7.16",
     "truffle": "5.3.3",
-    "underscore": "1.9.1"
+    "underscore": "1.12.1"
   }
 }
