@@ -5,6 +5,10 @@ node_modules/
 build/contracts/*
 !build/contracts/.gitkeep
 
+# coverage directory
+coverage/*
+!coverage/.gitkeep
+
 # Ignore compiled contracts
 bin/
 
