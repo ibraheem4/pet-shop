@@ -18,10 +18,10 @@ The goal of this project is to learn DApp development by expanding upon the wide
 
 ## Setup
 
-- Open Ganache
+- Open [Ganache](https://trufflesuite.com/ganache/)
 > Create new Workspace using `truffle-config.js`
 
-- Run `yarn start`
+- Run `yarn && yarn start`
 
 > - Compiles contracts
 > - Performs migrations
